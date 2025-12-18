@@ -13,7 +13,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Router basename="/carer-pharma-website">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
