@@ -1,8 +1,9 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { companyInfo } from '../data/company';
 
-export default function Navigation() {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const location = useLocation();
@@ -30,8 +31,8 @@ export default function Navigation() {
               className="w-12 h-12 object-contain"
             />
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Carer Pharma</h1>
-              <p className="text-xs text-gray-600">Carer For Life</p>
+              <h1 className="text-2xl font-bold text-gray-900">{companyInfo.name}</h1>
+              <p className="text-xs text-gray-600">{companyInfo.tagline}</p>
             </div>
           </Link>
 

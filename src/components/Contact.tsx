@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 import { useState, FormEvent } from 'react';
+import { companyInfo } from '../data/company';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -34,17 +35,17 @@ export default function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
+      details: [companyInfo.phone.office, `CEO: ${companyInfo.phone.ceo}`],
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['info@carerpharma.com', 'support@carerpharma.com'],
+      details: [companyInfo.email, companyInfo.website],
     },
     {
       icon: MapPin,
       title: 'Address',
-      details: ['123 Pharma Boulevard', 'Medical District, NY 10001'],
+      details: [companyInfo.address],
     },
     {
       icon: Clock,

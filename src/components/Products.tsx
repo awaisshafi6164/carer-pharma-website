@@ -1,56 +1,31 @@
-import { Heart, Brain, Shield, Activity, Pill, Stethoscope } from 'lucide-react';
+import { Pill, Tablets, Syringe, Package, Droplets, Shield } from 'lucide-react';
+import { products, productCategories } from '../data/products';
+import { useState } from 'react';
 
 export default function Products() {
-  const products = [
-    {
-      icon: Heart,
-      category: 'Cardiovascular',
-      name: 'CardioCare Plus',
-      description: 'Advanced treatment for hypertension and heart disease management with proven efficacy.',
-      benefits: ['Reduces blood pressure', 'Improves heart function', 'Minimizes side effects'],
-      color: 'from-red-500 to-pink-500',
-    },
-    {
-      icon: Brain,
-      category: 'Neurology',
-      name: 'NeuroShield',
-      description: 'Breakthrough medication for neurological disorders and cognitive health support.',
-      benefits: ['Enhances cognitive function', 'Neuroprotective properties', 'Long-term safety'],
-      color: 'from-purple-500 to-indigo-500',
-    },
-    {
-      icon: Shield,
-      category: 'Immunology',
-      name: 'ImmunoBoost',
-      description: 'Strengthens immune response and provides comprehensive protection against infections.',
-      benefits: ['Boosts immunity', 'Rapid action', 'Suitable for all ages'],
-      color: 'from-teal-500 to-cyan-500',
-    },
-    {
-      icon: Activity,
-      category: 'Metabolic Health',
-      name: 'MetaBalance',
-      description: 'Innovative solution for diabetes management and metabolic syndrome treatment.',
-      benefits: ['Regulates glucose levels', 'Weight management support', 'Reduces complications'],
-      color: 'from-green-500 to-emerald-500',
-    },
-    {
-      icon: Pill,
-      category: 'Pain Management',
-      name: 'PainRelief Pro',
-      description: 'Fast-acting pain relief for chronic and acute conditions with minimal dependency risk.',
-      benefits: ['Quick pain relief', 'Non-addictive formula', 'Multiple dosage options'],
-      color: 'from-orange-500 to-amber-500',
-    },
-    {
-      icon: Stethoscope,
-      category: 'Respiratory',
-      name: 'RespiClear',
-      description: 'Comprehensive respiratory care for asthma, COPD, and breathing disorders.',
-      benefits: ['Improves lung function', 'Reduces inflammation', 'Easy to use'],
-      color: 'from-blue-500 to-cyan-500',
-    },
-  ];
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+
+  const categoryIcons: Record<string, any> = {
+    'Capsules': Pill,
+    'Tablets': Tablets,
+    'Injections': Syringe,
+    'Sachets': Package,
+    'Dry Suspensions': Droplets,
+    'Nutra Products': Shield,
+  };
+
+  const categoryColors: Record<string, string> = {
+    'Capsules': 'from-red-500 to-pink-500',
+    'Tablets': 'from-blue-500 to-cyan-500',
+    'Injections': 'from-purple-500 to-indigo-500',
+    'Sachets': 'from-green-500 to-emerald-500',
+    'Dry Suspensions': 'from-orange-500 to-amber-500',
+    'Nutra Products': 'from-teal-500 to-cyan-500',
+  };
+
+  const filteredProducts = selectedCategory === 'All' 
+    ? products 
+    : products.filter(p => p.category === selectedCategory);
 
   return (
     <section id="products" className="py-24 bg-gradient-to-br from-gray-50 to-teal-50">
@@ -59,49 +34,79 @@ export default function Products() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Our Product Portfolio
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             Comprehensive pharmaceutical solutions across multiple therapeutic areas, backed by rigorous research and clinical trials.
           </p>
+          
+          <div className="flex flex-wrap justify-center gap-3">
+            <button
+              onClick={() => setSelectedCategory('All')}
+              className={`px-6 py-2 rounded-full font-semibold transition-all ${
+                selectedCategory === 'All'
+                  ? 'bg-teal-600 text-white'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+            >
+              All Products
+            </button>
+            {productCategories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-2 rounded-full font-semibold transition-all ${
+                  selectedCategory === category
+                    ? 'bg-teal-600 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group hover:scale-105"
-            >
-              <div className={`bg-gradient-to-r ${product.color} p-6 text-white`}>
-                <product.icon className="w-12 h-12 mb-3" />
-                <p className="text-sm font-semibold uppercase tracking-wide opacity-90">
-                  {product.category}
-                </p>
-                <h3 className="text-2xl font-bold mt-1">{product.name}</h3>
-              </div>
-
-              <div className="p-6 space-y-4">
-                <p className="text-gray-600 leading-relaxed">
-                  {product.description}
-                </p>
-
-                <div className="space-y-2">
-                  <p className="font-semibold text-gray-900">Key Benefits:</p>
-                  <ul className="space-y-1">
-                    {product.benefits.map((benefit, idx) => (
-                      <li key={idx} className="flex items-start space-x-2 text-sm text-gray-600">
-                        <span className="text-teal-600 mt-0.5">✓</span>
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
+          {filteredProducts.slice(0, 12).map((product) => {
+            const Icon = categoryIcons[product.category] || Pill;
+            const color = categoryColors[product.category] || 'from-teal-500 to-cyan-500';
+            
+            return (
+              <div
+                key={product.id}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group hover:scale-105"
+              >
+                <div className={`bg-gradient-to-r ${color} p-6 text-white`}>
+                  <Icon className="w-12 h-12 mb-3" />
+                  <p className="text-sm font-semibold uppercase tracking-wide opacity-90">
+                    {product.category}
+                  </p>
+                  <h3 className="text-2xl font-bold mt-1">{product.name}</h3>
                 </div>
 
-                <button className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                  Learn More
-                </button>
+                <div className="p-6 space-y-4">
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Generic: {product.genericName}</p>
+                    <p className="text-sm text-gray-500">Strength: {product.strength}</p>
+                  </div>
+                  
+                  <p className="text-gray-600 leading-relaxed">
+                    {product.description}
+                  </p>
+
+                  <div className="pt-2 border-t border-gray-100">
+                    <p className="text-sm text-gray-500">Pack Size: {product.packSize}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+        
+        {filteredProducts.length > 12 && (
+          <div className="text-center mt-12">
+            <p className="text-gray-600">Showing 12 of {filteredProducts.length} products</p>
+          </div>
+        )}
 
         <div className="mt-16 bg-white rounded-2xl shadow-xl p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -117,7 +122,7 @@ export default function Products() {
                   <div className="bg-teal-100 rounded-full p-1">
                     <Shield className="w-5 h-5 text-teal-600" />
                   </div>
-                  <span className="text-gray-700">FDA Approved Facilities</span>
+                  <span className="text-gray-700">GMP Compliant Facilities</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <div className="bg-teal-100 rounded-full p-1">
@@ -129,7 +134,7 @@ export default function Products() {
                   <div className="bg-teal-100 rounded-full p-1">
                     <Shield className="w-5 h-5 text-teal-600" />
                   </div>
-                  <span className="text-gray-700">WHO GMP Compliant</span>
+                  <span className="text-gray-700">DRAP Certified</span>
                 </li>
               </ul>
             </div>

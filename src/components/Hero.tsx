@@ -1,5 +1,6 @@
-import { ArrowRight, Shield, Award, Users } from 'lucide-react';
+import { ArrowRight} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { companyInfo } from '../data/company';
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -10,17 +11,17 @@ export default function Hero() {
           <div className="space-y-8 animate-fade-in">
             <div className="inline-block">
               <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-semibold">
-                Trusted Since 1998
+                {companyInfo.slogan}
               </span>
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-              Advancing Healthcare Through
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-600"> Innovation</span>
+              {companyInfo.tagline.split(' ').slice(0, 2).join(' ')}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-600"> {companyInfo.tagline.split(' ').slice(2).join(' ')}</span>
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed">
-              Carer Pharmaceutical is committed to developing and manufacturing high-quality medicines that improve lives worldwide. Our dedication to research and excellence drives us forward.
+              {companyInfo.about}
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -41,29 +42,11 @@ export default function Hero() {
           </div>
 
           <div className="relative">
-            <div className="bg-gradient-to-br from-teal-400 to-cyan-500 rounded-3xl p-8 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-              <div className="bg-white rounded-2xl p-8 space-y-6">
-                <img
-                  src="https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Pharmaceutical Research"
-                  className="w-full h-64 object-cover rounded-xl"
-                />
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="text-center p-4 bg-teal-50 rounded-xl">
-                    <Shield className="w-8 h-8 text-teal-600 mx-auto mb-2" />
-                    <p className="text-sm font-semibold text-gray-900">FDA Approved</p>
-                  </div>
-                  <div className="text-center p-4 bg-cyan-50 rounded-xl">
-                    <Award className="w-8 h-8 text-cyan-600 mx-auto mb-2" />
-                    <p className="text-sm font-semibold text-gray-900">ISO Certified</p>
-                  </div>
-                  <div className="text-center p-4 bg-teal-50 rounded-xl">
-                    <Users className="w-8 h-8 text-teal-600 mx-auto mb-2" />
-                    <p className="text-sm font-semibold text-gray-900">50M+ Lives</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img
+              src="assets/HeroSection.jpeg"
+              alt="Pharmaceutical Research"
+              className="w-full h-96 object-cover rounded-2xl shadow-2xl"
+            />
           </div>
         </div>
       </div>

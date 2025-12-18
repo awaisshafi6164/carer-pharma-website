@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Mail, Youtube } from 'lucide-react';
+import { companyInfo } from '../data/company';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -48,12 +49,12 @@ export default function Footer() {
                 className="w-12 h-12 object-contain"
               />
               <div>
-                <h1 className="text-2xl font-bold text-white">Carer Pharma</h1>
-                <p className="text-xs text-gray-400">Carer For Life</p>
+                <h1 className="text-2xl font-bold text-white">{companyInfo.name}</h1>
+                <p className="text-xs text-gray-400">{companyInfo.tagline}</p>
               </div>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Dedicated to improving lives through innovative pharmaceutical solutions and unwavering commitment to quality healthcare.
+              {companyInfo.slogan}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -125,18 +126,18 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400">
-              © {currentYear} Carer Pharmaceutical Company. All rights reserved.
+              © {currentYear} {companyInfo.name}. All rights reserved.
             </p>
             <div className="flex items-center space-x-2 text-sm">
               <Mail className="w-4 h-4 text-teal-500" />
-              <a href="mailto:info@carerpharma.com" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
-                info@carerpharma.com
+              <a href={`mailto:${companyInfo.email}`} className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+                {companyInfo.email}
               </a>
             </div>
           </div>
           <p className="text-xs text-gray-500 mt-4 text-center md:text-left">
-            Carer Pharmaceutical is committed to compliance with all applicable healthcare regulations.
-            All products are FDA approved and manufactured under strict quality control standards.
+            {companyInfo.name} is committed to compliance with all applicable healthcare regulations.
+            All products are DRAP certified and manufactured under strict GMP quality control standards.
           </p>
         </div>
       </div>
