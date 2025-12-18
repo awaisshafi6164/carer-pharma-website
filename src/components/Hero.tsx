@@ -1,12 +1,10 @@
 import { ArrowRight, Shield, Award, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-interface HeroProps {
-  onNavigate: (section: string) => void;
-}
-
-export default function Hero({ onNavigate }: HeroProps) {
+export default function Hero() {
+  const navigate = useNavigate();
   return (
-    <section id="home" className="relative pt-20 min-h-screen bg-gradient-to-br from-teal-50 via-white to-cyan-50">
+    <section id="home" className="relative min-h-screen bg-gradient-to-br from-teal-50 via-white to-cyan-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-fade-in">
@@ -27,14 +25,14 @@ export default function Hero({ onNavigate }: HeroProps) {
 
             <div className="flex flex-wrap gap-4">
               <button
-                onClick={() => onNavigate('products')}
+                onClick={() => navigate('/products')}
                 className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center space-x-2"
               >
                 <span>Explore Products</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button
-                onClick={() => onNavigate('contact')}
+                onClick={() => navigate('/contact')}
                 className="bg-white text-teal-600 px-8 py-4 rounded-lg font-semibold border-2 border-teal-600 hover:bg-teal-50 transition-all duration-300"
               >
                 Contact Us

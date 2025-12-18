@@ -1,41 +1,29 @@
 import { useEffect } from 'react';
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import About from './components/About';
-import Products from './components/Products';
-import Research from './components/Research';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ProductsPage from './pages/ProductsPage';
+import ResearchPage from './pages/ResearchPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   useEffect(() => {
-    document.title = 'Carer Pharmaceutical - Healthcare Excellence';
+    document.title = 'Carer Pharmaceutical - Carer For Life';
   }, []);
 
-  const handleNavigate = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation onNavigate={handleNavigate} />
-      <Hero onNavigate={handleNavigate} />
-      <About />
-      <Products />
-      <Research />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="products" element={<ProductsPage />} />
+          <Route path="research" element={<ResearchPage />} />
+          <Route path="contact" element={<ContactPage />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

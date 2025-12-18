@@ -1,4 +1,4 @@
-import { Pill, Facebook, Twitter, Linkedin, Instagram, Mail } from 'lucide-react';
+import { Facebook, Instagram, Mail, Youtube } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -31,10 +31,9 @@ export default function Footer() {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61584684687653', label: 'Facebook' },
     { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Youtube, href: 'https://www.instagram.com/carerpharma/', label: 'Youtube' },
   ];
 
   return (
@@ -43,12 +42,14 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="bg-gradient-to-br from-teal-500 to-cyan-600 p-2.5 rounded-lg">
-                <Pill className="w-7 h-7 text-white" />
-              </div>
+              <img
+                src="assets/logo/CP-logo.png"
+                alt="Carer Pharma Logo"
+                className="w-12 h-12 object-contain"
+              />
               <div>
                 <h1 className="text-2xl font-bold text-white">Carer Pharma</h1>
-                <p className="text-xs text-gray-400">Healthcare Excellence</p>
+                <p className="text-xs text-gray-400">Carer For Life</p>
               </div>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6">
