@@ -23,7 +23,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-7 gap-0 items-center">
               <div className="relative md:col-span-2 h-56 md:h-auto md:min-h-[320px]">
                 <img
-                  src="assets/CEOAmjad.jpg"
+                  src="assets/CEOAmjad.png"
                   alt={ceo.name}
                   className="w-full h-full object-cover"
                 />

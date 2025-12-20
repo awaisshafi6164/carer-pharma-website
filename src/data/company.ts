@@ -24,17 +24,27 @@ export const leadership = [
     name: 'Haji M.Amjad Sulehri',
     position: 'CEO',
     statement: 'As CEO, I lead a passionate team committed to enhancing patient well-being. We prioritize quality, innovation, and integrity in all our endeavors. Join us as we make a positive impact on global healthcare',
-    image: 'assets/CEOAmjad.jpg',
+    image: 'assets/CEOAmjad.png',
   },
   {
     name: 'Dr Shakoor',
     position: 'Director',
-    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'assets/DirectorShakoor.png',
   },
   {
     name: 'Dr M.Shafeeq',
     position: 'Director',
-    image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'assets/DirectorShafeeq.png',
+  },
+  {
+    name: 'Dr Aftab Elahi',
+    position: 'Production InCharge',
+    image: 'assets/AftabElahi.jpeg',
+  },
+  {
+    name: 'Muhammad Hashim',
+    position: 'Plan Manager',
+    image: 'assets/MuhammadHashim.jpeg',
   },
 ];
 
@@ -57,5 +67,98 @@ export const facilityFeatures = [
   {
     title: 'Customer Satisfaction',
     description: 'At Carer Pharmaceutical, exceeding customer expectations is our priority, ensuring trust and satisfaction with every product and service.',
+  },
+];
+
+export const galleryImages = [
+  {
+    id: 1,
+    title: 'Ampoule Washing and Sterilization',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Ampoule washing and sterilization.jpeg',
+  },
+  {
+    id: 2,
+    title: 'Blister 250mm China',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Blister 250mm china.jpeg',
+  },
+  {
+    id: 3,
+    title: 'Capsule Filling Machine',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Capsule filling machine.jpeg',
+  },
+  {
+    id: 4,
+    title: 'Coating Machine',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Coating machine.jpeg',
+  },
+  {
+    id: 5,
+    title: 'Dispensing Area',
+    category: 'Production Areas',
+    image: 'assets/Gallery/Dispensing area.jpeg',
+  },
+  {
+    id: 6,
+    title: 'Drying Unit',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Drying.jpeg',
+  },
+  {
+    id: 7,
+    title: 'DS Filling Machine',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Ds filling machine.jpeg',
+  },
+  {
+    id: 8,
+    title: 'Mixing Unit',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Mixing.jpeg',
+  },
+  {
+    id: 9,
+    title: 'Packing Hall',
+    category: 'Production Areas',
+    image: 'assets/Gallery/Packing Hall.jpeg',
+  },
+  {
+    id: 10,
+    title: 'RMS System',
+    category: 'Quality Control',
+    image: 'assets/Gallery/RMS.jpeg',
+  },
+  {
+    id: 11,
+    title: 'Sachet Filling Machine',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Sachet filling machine.jpeg',
+  },
+  {
+    id: 12,
+    title: 'Sachet Mixer',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Sachet mixer.jpeg',
+  },
+  {
+    id: 13,
+    title: 'Tablet Corridor',
+    category: 'Production Areas',
+    image: 'assets/Gallery/Tablet Coridor.jpeg',
+  },
+  {
+    id: 14,
+    title: 'Tablet Wetting',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Tablet Wetting.jpeg',
+  },
+  {
+    id: 15,
+    title: 'ZP 31 Compression Machine',
+    category: 'Manufacturing Equipment',
+    image: 'assets/Gallery/Zp 31 compression machine.jpeg',
   },
 ];

@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
 import ResearchPage from './pages/ResearchPage';
+import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="about" element={<AboutPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="research" element={<ResearchPage />} />
+          <Route path="gallery" element={<GalleryPage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
       </Routes>
