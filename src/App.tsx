@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/carer-pharma-website">
+    <Router basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
