@@ -6,13 +6,19 @@
     <script type="text/javascript">
       var pathSegmentsToKeep = 1;
       var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
-      );
+      var segments = l.pathname.split('/');
+      // If landing exactly on /carer-pharma-website with no trailing slash, redirect to add it
+      if (segments[segments.length - 1] === 'carer-pharma-website') {
+        l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/carer-pharma-website/');
+      } else {
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          segments.slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+          segments.slice(1 + pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+        );
+      }
     </script>
   </head>
   <body>
